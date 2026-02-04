@@ -77,6 +77,12 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+# Automatically install powerlevel10k if missing
+if [[ ! -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" ]]; then
+  echo "Installing powerlevel10k..."
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+fi
+
 plugins=(git zsh-history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
@@ -132,4 +138,10 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+if [[ -f ~/.p10k.zsh ]]; then
+  source ~/.p10k.zsh
+else
+  # Fallback to the .p10k.zsh in the same directory as this .zshrc
+  local p10k_config="${${(%):-%x}:A:h}/.p10k.zsh"
+  [[ -f "$p10k_config" ]] && source "$p10k_config"
+fi
