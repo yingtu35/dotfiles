@@ -1,0 +1,8 @@
+[core]
+	autocrlf = input
+	excludesfile = /Users/tuying/.gitignore_global
+[user]
+	email = yingtu35@gmail.com
+	name = Ying Tu
+[alias]
+	graph = log --all --graph --decorate --oneline
