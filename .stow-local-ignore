@@ -1,0 +1,9 @@
+\.git
+\.github
+\.DS_Store
+.*\.md
+.*\.sh
+Brewfile
+plans
+research
+\.stow-local-ignore

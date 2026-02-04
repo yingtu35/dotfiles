@@ -113,8 +113,10 @@ export LANG=en_US.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias -g car=cat
-alias -g CL=clear
+
+# Load custom aliases and path configurations
+[[ -f "$HOME/.aliases.zsh" ]] && source "$HOME/.aliases.zsh"
+[[ -f "$HOME/.path.zsh" ]] && source "$HOME/.path.zsh"
 
 # Created by `pipx` on 2024-09-25 04:30:34
 export PATH="$PATH:/Users/tuying/.local/bin"
