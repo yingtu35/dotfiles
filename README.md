@@ -49,7 +49,20 @@ After backing up your old Mac you may now follow these install instructions to s
     cd ~/.dotfiles && ./fresh.sh
     ```
 
-5. Start `Herd.app` and run its install process
+5. **Gemini CLI Setup**:
+   Make sure Gemini CLI is installed. See [Gemini CLI Documentation](https://geminicli.com/docs/get-started/installation/) for more details.
+
+   The `.gemini` directory is excluded from `stow` to prevent accidental commit of sensitive data. You must manually copy the necessary configurations:
+
+    ```zsh
+    mkdir -p ~/.gemini
+    cp -r .gemini/agents ~/.gemini/
+    cp -r .gemini/commands ~/.gemini/
+    # Copy other sub-directories as needed (e.g. skills)
+    ```
+   
+   Ensure your `oauth_creds.json` and `settings.json` are placed in `~/.gemini/` manually.
+
 6. After mackup is synced with your cloud storage, restore preferences by running `mackup restore`
 7. Restart your computer to finalize the process
 

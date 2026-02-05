@@ -7,3 +7,4 @@ Brewfile
 plans
 research
 \.stow-local-ignore
+.gemini
